@@ -1,0 +1,12 @@
+version: '3'
+
+services:
+  app:
+    build:
+      dockerfile: Dockerfile
+    ports:
+      - ${APP_PORT}:${APP_PORT}
+    volumes:
+      - .:/usr/src/app
+    environment:
+      - PORT=${APP_PORT}

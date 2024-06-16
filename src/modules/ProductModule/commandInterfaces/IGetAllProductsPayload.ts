@@ -1,0 +1,3 @@
+interface IGetAllProductsPayload extends IPayload {
+
+}

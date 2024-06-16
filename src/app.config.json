@@ -1,0 +1,10 @@
+{
+    "ProductModule": {
+        "protocol": "INTERNAL",
+        "address": null
+    },
+    "UserModule": {
+        "protocol": "INTERNAL",
+        "address": null
+    }
+}

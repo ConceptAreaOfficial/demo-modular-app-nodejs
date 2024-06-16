@@ -1,0 +1,25 @@
+version: '3'
+
+services:
+  app_instance_product_module:
+    build:
+      dockerfile: Dockerfile
+    ports:
+      - ${APP_PRODUCT_MODULE_PORT}:${APP_PRODUCT_MODULE_PORT}
+    volumes:
+      - .:/usr/src/app1
+    environment:
+      - PORT=${APP_PRODUCT_MODULE_PORT}
+      - PRODUCT_MODULE={"protocol":"INTERNAL", "address":null}
+      - USER_MODULE={"protocol":"HTTP", "address":"http://app_instance_user_module:${APP_USER_MODULE_PORT}"}
+  app_instance_user_module:
+    build:
+      dockerfile: Dockerfile
+    ports:
+      - ${APP_USER_MODULE_PORT}:${APP_USER_MODULE_PORT}
+    volumes:
+      - .:/usr/src/app2
+    environment:
+      - PORT=${APP_USER_MODULE_PORT}
+      - PRODUCT_MODULE={"protocol":"HTTP", "address":"http://app_instance_product_module:${APP_PRODUCT_MODULE_PORT}"}
+      - USER_MODULE={"protocol":"INTERNAL", "address":null}
